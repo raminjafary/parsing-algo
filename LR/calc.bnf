@@ -1,0 +1,24 @@
+%lex
+
+%%
+
+\s+ return /* ws */
+\d+ return "number"
+
+/lex
+
+%%
+
+E
+  : E '+' T
+  | T
+  ;
+
+T
+  : T '*' F
+  | F
+  ;
+
+F
+  : number
+  ;

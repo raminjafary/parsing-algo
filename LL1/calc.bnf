@@ -1,0 +1,39 @@
+// Lexical:
+
+%lex
+
+%%
+
+\s+     /* skip whitespace */
+
+\d+     return 'number'
+
+/lex
+
+// --------------------------------
+// BNF:
+
+%%
+
+E
+  : T E'
+  ;
+
+E'
+  : '+' T E'
+  |
+  ;
+
+T
+  : F T'
+  ;
+
+T'
+  : '*' F T'
+  |
+  ;
+
+F
+  : number
+  | '(' E ')'
+  ;
